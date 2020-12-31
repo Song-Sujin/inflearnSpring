@@ -9,7 +9,17 @@ import com.example.demo.repository.MemoryMemberRepository;
 
 public class MemberService
 {
-	private final MemberRepository memberRepository = new MemoryMemberRepository();
+	// 이건 다른 인스턴스
+	//private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+	// 이건 같은 인스턴스 
+	private final MemberRepository memberRepository;
+	
+	// 직접 생성하는게 아니라 외부에서 넣어주도록 바꾸는 것
+	public MemberService(MemberRepository memberRepository)
+	{
+		this.memberRepository = memberRepository;
+	}
 
 	// 회원 가입
 	public Long join(Member member)
