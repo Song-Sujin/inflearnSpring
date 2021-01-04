@@ -3,10 +3,14 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.demo.domain.Member;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.MemoryMemberRepository;
 
+//@Service	// 이때도 매개변수로 받는 MemoryMemberRepository(구현체)에 @Repository 어노테이션을 등록해야 함
 public class MemberService
 {
 	// 이건 다른 인스턴스
@@ -16,6 +20,7 @@ public class MemberService
 	private final MemberRepository memberRepository;
 	
 	// 직접 생성하는게 아니라 외부에서 넣어주도록 바꾸는 것
+	//@Autowired
 	public MemberService(MemberRepository memberRepository)
 	{
 		this.memberRepository = memberRepository;
@@ -24,7 +29,7 @@ public class MemberService
 	// 회원 가입
 	public Long join(Member member)
 	{
-		// 같은 이름이 있는 중복 회원 X
+		// 같은 이름이 있는 중복 회원 X 
 		// 이렇게 바로 꺼내는것을 권장하지는 않는다
 		//Optional<Member> result = memberRepository.findByName(member.getName());
 		/*
