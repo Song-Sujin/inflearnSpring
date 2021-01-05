@@ -5,12 +5,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.Member;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.MemoryMemberRepository;
 
 //@Service	// 이때도 매개변수로 받는 MemoryMemberRepository(구현체)에 @Repository 어노테이션을 등록해야 함
+@Transactional		// JPA 쓸때 서비스 계층에 데이터를 저장하거나 변경할때는 이게 있어야 함
 public class MemberService
 {
 	// 이건 다른 인스턴스
